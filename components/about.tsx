@@ -32,19 +32,22 @@ export default function About() {
         <span>My favorite aspect of programming </span> is the problem-solving
         process. There's a sense of fulfillment when I finally crack a
         challenging problem. My core stack includes{" "}
-        <span className="font-bold">React and Next.js{" "}</span>and I'm proficient
-        in TypeScript, Tailwind, and Figma. I have a penchant for learning new
-        technologies and am always eager to expand my skill set. I am currently
-        seeking a <span className="font-medium">full-time position</span> as a
-        Frontend Developer where I can leverage my skills and contribute
-        effectively to projects.
+        <span className="font-bold">React </span>and I'm proficient in{" "}
+        <span className="font-bold">
+          Next.js, TypeScript, Tailwind, and Figma.
+        </span>{" "}
+        I have a penchant for learning new technologies and am always eager to
+        expand my skill set. I am currently seeking a{" "}
+        <span className="font-medium">full-time position</span> as a Frontend
+        Developer where I can leverage my skills and contribute effectively to
+        projects.
       </p>
 
       <p>
         <span className="font-medium">Outside of coding</span>, I have a keen
         interest in traveling, which has inspired me to maintain a travel vlog
         channel. I also enjoy{" "}
-        <span className="font-medium">acquiring new skills </span>. and am
+        <span className="font-medium">acquiring new skills </span> and am
         currently engrossed in learning about{" "}
         <span className="font-bold">Server-Side Rendering (SSR) </span>and
         mastering the guitar.

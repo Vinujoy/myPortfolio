@@ -45,14 +45,14 @@ export default function Intro() {
       </div>
 
       <motion.h1
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-3xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Vinu,</span> a{" "}
-        <span className="font-bold">front-end developer</span> with{" "}
-        <span className="font-bold">5 years</span> of experience. My expertise
-        lies in building <span className="font-bold">web applications </span>
+        <span className="">Hello, I'm Vinu,</span> a{" "}
+        <span className="">front-end developer</span> with{" "}
+        <span className="">5 years</span> of experience. My expertise
+        lies in building <span className="">web applications </span>
         with a primary focus on <span className="underline">React</span>.
       </motion.h1>
 

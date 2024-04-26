@@ -49,10 +49,10 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I'm Vinu.</span> I'm a{" "}
+        <span className="font-bold">Hello, I'm Vinu,</span> a{" "}
         <span className="font-bold">front-end developer</span> with{" "}
-        <span className="font-bold">5 years</span> of experience. I specialize
-        in building <span className="font-bold">web applications </span>
+        <span className="font-bold">5 years</span> of experience. My expertise
+        lies in building <span className="font-bold">web applications </span>
         with a primary focus on <span className="underline">React</span>.
       </motion.h1>
 
@@ -78,7 +78,7 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10"
-          href="/CV.pdf"
+          href="/React Developer_Vinu Joy.pdf"
           download
         >
           Download CV{" "}

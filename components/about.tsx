@@ -21,28 +21,33 @@ export default function About() {
       <p className="mb-3">
         After graduating with a degree in{" "}
         <span className="font-bold">
-          Btech in Computer Science and engineering
-        </span>
-        , I decided to pursue my passion for programming. I started my career as
-        a backend developer and was always fascinated with frontend development
-        so i learned <span className="font-medium">front-end development</span>.{" "}
-        <span>My favorite part of programming</span> is the problem-solving
-        aspect. I <span className="underline">love</span> the feeling of finally
-        figuring out a solution to a problem. My core stack is{" "}
-        <span className="font-bold">React and Next.js</span>. I am also familiar
-        with TypeScript, Tailwind, and Figma. I am always looking to learn new
-        technologies. I am currently looking for a{" "}
-        <span className="font-medium">full-time position</span> as a Frontend
-        Developer
+          B.Tech in Computer Science and Engineering,
+        </span>{" "}
+        I embarked on a journey to pursue my passion for programming. Beginning
+        my career as a backend developer, I soon found myself drawn to{" "}
+        <span className="font-medium">front-end development,</span> which led me
+        to acquire expertise in this domain.
+      </p>
+      <p>
+        <span>My favorite aspect of programming </span> is the problem-solving
+        process. There's a sense of fulfillment when I finally crack a
+        challenging problem. My core stack includes{" "}
+        <span className="font-bold">React and Next.js{" "}</span>and I'm proficient
+        in TypeScript, Tailwind, and Figma. I have a penchant for learning new
+        technologies and am always eager to expand my skill set. I am currently
+        seeking a <span className="font-medium">full-time position</span> as a
+        Frontend Developer where I can leverage my skills and contribute
+        effectively to projects.
       </p>
 
       <p>
-        <span className="font-medium">When I'm not coding</span>, I enjoy
-        traveling, for that, I have a travel vlog channel. I also enjoy{" "}
-        <span className="font-medium">learning new things</span>. I am currently
-        learning about{" "}
-        <span className="font-bold">Server-Side Rendering (SSR)</span>. I'm also
-        learning how to play the guitar.
+        <span className="font-medium">Outside of coding</span>, I have a keen
+        interest in traveling, which has inspired me to maintain a travel vlog
+        channel. I also enjoy{" "}
+        <span className="font-medium">acquiring new skills </span>. and am
+        currently engrossed in learning about{" "}
+        <span className="font-bold">Server-Side Rendering (SSR) </span>and
+        mastering the guitar.
       </p>
     </motion.section>
   );

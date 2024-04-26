@@ -64,21 +64,21 @@ export const projectsData = [
   {
     title: "TONICO SMILES",
     description:
-      "Offers handpicked, fresh products with local delivery. Leads to a 40% increase in customer retention and a 25% rise in average order value.",
+      "Offers handpicked, fresh products with local delivery, leading to a 40% increase in customer retention and a 25% rise in average order value.",
     tags: ["React", "Tailwind CSS ","Redux", "Firebase Auth"],
     imageUrl: tonicoSmileImg,
   },
   {
     title: "READINESS NOTIFICATION",
     description:
-      "To manage booking, integrating custom mail templates for user. Improved communication by 20% and decreased user error rates by 15%.",
+      "Managed booking by integrating custom mail templates for users, resulting in a 20% improvement in communication and a 15% decrease in user error rates.",
     tags: ["React", "Material-UI", "Redux"],
     imageUrl: notificationToolImg,
   },
   {
     title: "Import Cargo Release",
     description:
-      "Automates Rail Pickup number extraction, validates finance releases, and sends email notifications.",
+      "Automates rail pickup number extraction, validates finance releases, and sends email notifications.",
     tags: ["React", "Material-UI", "Redux","React Hook Form","Data Grid "],
     imageUrl: importCargoReleaseImg,
   },

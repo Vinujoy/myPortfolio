@@ -49,7 +49,7 @@ export default function About() {
         channel. I also enjoy{" "}
         <span className="font-medium">acquiring new skills </span> and am
         currently engrossed in learning about{" "}
-        <span className="font-bold">Server-Side Rendering (SSR) </span>and
+        <span className="font-bold">Gatsby </span>and
         mastering the guitar.
       </p>
     </motion.section>

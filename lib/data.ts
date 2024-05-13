@@ -93,5 +93,5 @@ export const projectsData = [
 
 export const skillsData = [
  
-"React.js", "Next.js", "Hooks", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "RESTful API Integration", "Redux ToolKit", "Material-UI", "Tailwind CSS", "Bootstrap", "React Hook Form", "React Storybook", "Data Grid", "JIRA", "Figma", "Postman", "Git"
+"React.js", "Next.js", "Hooks", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "RESTful API Integration", "Redux ToolKit", "Material-UI", "Tailwind CSS", "Bootstrap", "React Hook Form", "React Storybook", "Data Grid", "JIRA", "Figma", "Postman", "Git","Razorpay"
 ] as const;

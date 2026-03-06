@@ -3,6 +3,7 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import tonicoSmileImg from "@/public/tonicosmile.jpeg";
+import retailTenantImg from "@/public/retailtenant.jpg";
 import notificationToolImg from "@/public/NOT.jpeg";
 import importCargoReleaseImg from "@/public/importcargo.jpeg";
 import sgImg from "@/public/SG.jpeg";
@@ -35,37 +36,60 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Btech in Computer Science and engineering",
-    location: "A.P.J Abdul Kalam Technological University",
+    title: "Senior Software Engineer",
+    location: "Dbiz.ai",
     description:
-      "I graduated from Viswajyothi College of Engineering and Technology in 2019. Immediately after graduation, I secured a job as a front-end developer",
-    icon: React.createElement(LuGraduationCap),
-    date: "2019",
+      "Architecting high-performance Next.js applications using SSR, SSG, and ISR strategies. Focused on Core Web Vitals optimization, scalable reusable component architecture, and SEO-driven enterprise retail platforms.",
+    icon: React.createElement(FaReact),
+    date: "Aug 2024 - Present",
   },
   {
-    title: "Full Stack web developer ",
+    title: "Senior Software Engineer",
+    location: "Cubet",
+    description:
+      "Developed scalable React applications with Redux Toolkit and Zustand for complex state management. Implemented frontend best practices and improved development efficiency across the team.",
+    icon: React.createElement(FaReact),
+    date: "Jun 2024 - Aug 2024",
+  },
+  {
+    title: "Frontend Web Developer",
+    location: "GSCO Technology Services (CMA CGM Division)",
+    description:
+      "Built enterprise-grade React applications and created reusable component libraries that reduced development time by 30% and improved operational efficiency by 20%.",
+    icon: React.createElement(FaReact),
+    date: "2022 - May 2024",
+  },
+  {
+    title: "Full Stack Web Developer",
     location: "AlignMinds Technologies",
     description:
-      "Designed and implemented custom software solutions aligned with client needs, resulting in a 30% increase in client satisfaction. Consistently delivered projects 25% ahead of deadlines.",
+      "Delivered custom web solutions aligned with client requirements, increasing client satisfaction by 30% while consistently delivering projects ahead of schedule.",
     icon: React.createElement(CgWorkAlt),
     date: "2019 - 2022",
   },
   {
-    title: "Frontend Web Developer",
-    location: "GSCO Technology Services | CMA CGM division",
+    title: "BTech in Computer Science and Engineering",
+    location: "A.P.J Abdul Kalam Technological University",
     description:
-      "Implemented software solutions for CMA CGM division, achieving a 20% increase in efficiency and 15% reduction in processing time. Developed a reusable React component library, optimizing development processes and reducing time-to-market by 30%.",
-    icon: React.createElement(FaReact),
-    date: "2022 - present",
+      "Graduated from Viswajyothi College of Engineering and Technology and started my career as a frontend developer.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2015 - 2019",
   },
 ] as const;
 
 export const projectsData = [
   {
+    title: "Retail Tenant WebApp",
+    description:
+      "Built an SEO-optimized analytics dashboard for retail tenants using Next.js (SSR) with reusable components, Redux Toolkit, and MUI for a scalable and responsive UI.",
+    tags: ["Next.js","Redux Toolkit","SSR"],
+    imageUrl: retailTenantImg,
+  },
+  {
     title: "TONICO SMILES",
     description:
       "Offers handpicked, fresh products with local delivery, leading to a 40% increase in customer retention and a 25% rise in average order value.",
-    tags: ["React", "Tailwind CSS ","Redux", "Firebase Auth"],
+    tags: ["React", "Tailwind CSS ", "Redux", "Firebase Auth"],
     imageUrl: tonicoSmileImg,
   },
   {
@@ -79,19 +103,54 @@ export const projectsData = [
     title: "Import Cargo Release",
     description:
       "Automates rail pickup number extraction, validates finance releases, and sends email notifications.",
-    tags: ["React", "Material-UI", "Redux","React Hook Form","Data Grid "],
+    tags: ["React", "Material-UI", "Redux", "React Hook Form", "Data Grid "],
     imageUrl: importCargoReleaseImg,
   },
   {
     title: "Storage Guarantee",
     description:
       "Streamlines Storage Guarantee requests at multiple terminals, improving processing speed by 20% and reducing approval time by 15%.",
-    tags:  ["React", "Material-UI", "Redux","React Hook Form","Data Grid "],
+    tags: ["React", "Material-UI", "Redux", "React Hook Form", "Data Grid "],
     imageUrl: sgImg,
   },
 ] as const;
 
 export const skillsData = [
- 
-"React.js", "Next.js", "Hooks", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "RESTful API Integration", "Redux ToolKit", "Material-UI", "Tailwind CSS", "Bootstrap", "React Hook Form", "React Storybook", "Data Grid", "JIRA", "Figma", "Postman", "Git","Razorpay","Firebase"
+  "React.js",
+  "Next.js",
+  "TypeScript",
+  "JavaScript (ES6+)",
+  "React Hooks",
+  "HTML5",
+  "CSS3",
+  "SCSS",
+  "Responsive Design",
+
+  "Redux Toolkit",
+  "Zustand",
+  "REST API Integration",
+
+  "Material UI (MUI)",
+  "Tailwind CSS",
+  "Bootstrap",
+  "Storybook",
+  "React Hook Form",
+
+  "SSR / SSG / ISR",
+  "SEO Optimization",
+  "Performance Optimization",
+  "Core Web Vitals",
+  "Code Splitting",
+
+  "Webpack",
+  "Git",
+  "Jest",
+  "Postman",
+  "JIRA",
+  "Figma",
+
+  "CI/CD",
+  "Azure",
+  "Firebase",
+  "Razorpay"
 ] as const;

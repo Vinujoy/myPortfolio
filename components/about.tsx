@@ -19,38 +19,36 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
-        After graduating with a degree in{" "}
+        Senior <span className="font-bold">Frontend Developer</span> with over 6
+        years of experience building high-performance, scalable, and
+        SEO-optimized web applications. I specialize in{" "}
+        <span className="font-bold">React.js</span> and{" "}
+        <span className="font-bold">Next.js</span>, with strong expertise in{" "}
         <span className="font-bold">
-          B.Tech in Computer Science and Engineering,
-        </span>{" "}
-        I embarked on a journey to pursue my passion for programming. Beginning
-        my career as a backend developer, I soon found myself drawn to{" "}
-        <span className="font-medium">front-end development,</span> which led me
-        to acquire expertise in this domain.
+          TypeScript, Redux Toolkit, Zustand, Tailwind CSS, MUI
+        </span>
+        , and responsive UI design. I have a proven track record of delivering
+        projects ahead of schedule, improving performance scores by over 30%,
+        and creating reusable component architectures that accelerate
+        development.
       </p>
       <p>
-        <span>My favorite aspect of programming </span> is the problem-solving
-        process. There's a sense of fulfillment when I finally crack a
-        challenging problem. My core stack includes{" "}
-        <span className="font-bold">React </span>and I'm proficient in{" "}
-        <span className="font-bold">
-          Next.js, TypeScript, Tailwind, and Figma.
-        </span>{" "}
-        I have a penchant for learning new technologies and am always eager to
-        expand my skill set. I am currently seeking a{" "}
-        <span className="font-medium">full-time position</span> as a Frontend
-        Developer where I can leverage my skills and contribute effectively to
-        projects.
+        I thrive on <span className="font-medium">solving complex problems</span>
+        {" "}
+        and optimizing web experiences, from Core Web Vitals to bundle size
+        reduction and SSR/SSG/ISR strategies. Passionate about continuous
+        learning, I’m exploring <span className="font-bold">Gatsby</span> and
+        enhancing my design skills through{" "}
+        <span className="font-bold">Figma</span>.
       </p>
 
       <p>
-        <span className="font-medium">Outside of coding</span>, I have a keen
-        interest in traveling, which has inspired me to maintain a travel vlog
-        channel. I also enjoy{" "}
-        <span className="font-medium">acquiring new skills </span> and am
-        currently engrossed in learning about{" "}
-        <span className="font-bold">Gatsby </span>and
-        mastering the guitar.
+        <span className="font-medium">Outside of coding</span>, I enjoy traveling
+        and run a travel vlog channel, which fuels my creativity and curiosity.
+        I am looking for challenging <span className="font-medium">frontend</span>
+        {" "}
+        opportunities where I can leverage my skills to build impactful,
+        high-quality web applications.
       </p>
     </motion.section>
   );

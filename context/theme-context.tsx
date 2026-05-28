@@ -37,23 +37,17 @@ export default function ThemeContextProvider({
 
     if (localTheme) {
       setTheme(localTheme);
-
-      if (localTheme === "light") {
-        document.documentElement.classList.add("light");
+      if (localTheme === "dark") {
+        document.documentElement.classList.add("dark");
       }
-    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      setTheme("light");
-      document.documentElement.classList.add("light");
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        toggleTheme,
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

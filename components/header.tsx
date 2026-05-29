@@ -1,71 +1,128 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { usePathname } from "next/navigation";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="z-[999] relative">
-      <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
-        initial={{ y: -100, x: "-50%", opacity: 0 }}
-        animate={{ y: 0, x: "-50%", opacity: 1 }}
-      ></motion.div>
-
-      <nav
-        className="flex fixed top-[0.15rem] left-1/2 h-12 -translate-x-1/2 py-2 sm:top-[1.7rem] sm:h-[initial] sm:py-0"
-        aria-label="Main navigation"
+    <header className="header-shell fixed inset-x-0 top-0 z-[100] h-16 transition-colors">
+      <div
+        className={clsx(
+          "site-container flex h-full items-center justify-between",
+          isScrolled && "border-b border-[var(--border-subtle)]"
+        )}
       >
-        <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 sm:w-[initial] sm:flex-nowrap sm:gap-5">
-          {links.map((link) => (
-            <motion.li
-              className="h-3/4 flex items-center justify-center relative"
-              key={link.hash}
-              initial={{ y: -100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-            >
-              <Link
-                className={clsx(
-                  "flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-full dark:text-gray-500 dark:hover:text-gray-300",
-                  {
-                    "text-gray-950 dark:text-gray-200":
-                      activeSection === link.name,
-                  }
-                )}
-                href={pathname === "/" ? link.hash : `/${link.hash}`}
-                aria-current={activeSection === link.name ? "page" : undefined}
-                onClick={() => {
-                  setActiveSection(link.name);
-                  setTimeOfLastClick(Date.now());
-                }}
-              >
-                {link.name}
+        <Link
+          href="/"
+          className="font-[var(--font-display)] text-[22px] font-extrabold tracking-normal text-[var(--text-primary)] transition-all duration-200 hover:tracking-[0.5px]"
+        >
+          vinu<span className="text-[var(--accent)]">.</span>
+        </Link>
 
-                {link.name === activeSection && (
-                  <motion.span
-                    className="bg-gray-100 rounded-full absolute inset-0 -z-10 dark:bg-gray-800"
-                    layoutId="activeSection"
-                    transition={{
-                      type: "spring",
-                      stiffness: 380,
-                      damping: 30,
+        <nav className="hidden md:block" aria-label="Main navigation">
+          <ul className="flex items-center gap-6">
+            {links.map((link) => (
+              <li key={link.hash}>
+                <Link
+                  href={pathname === "/" ? link.hash : `/${link.hash}`}
+                  aria-current={activeSection === link.name ? "page" : undefined}
+                  className={clsx(
+                    "font-[var(--font-mono)] text-[12px] uppercase tracking-[0.06em] transition-colors duration-150",
+                    activeSection === link.name
+                      ? "text-[var(--text-primary)]"
+                      : "text-[var(--text-primary)]/70 hover:text-[var(--accent)]"
+                  )}
+                  onClick={() => {
+                    setActiveSection(link.name);
+                    setTimeOfLastClick(Date.now());
+                  }}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <button
+          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] text-[var(--text-secondary)]"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          {isOpen ? <HiOutlineX size={20} /> : <HiOutlineMenuAlt3 size={20} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="mobile-nav-overlay fixed inset-0 top-16 backdrop-blur-2xl md:hidden"
+          >
+            <motion.ul
+              className="flex h-full flex-col items-center justify-center gap-8"
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.08 } },
+              }}
+            >
+              {links.map((link) => (
+                <motion.li
+                  key={link.hash}
+                  variants={{
+                    hidden: { opacity: 0, y: -20 },
+                    show: { opacity: 1, y: 0 },
+                  }}
+                >
+                  <Link
+                    href={pathname === "/" ? link.hash : `/${link.hash}`}
+                    className="font-[var(--font-display)] text-[28px] text-[var(--text-primary)]"
+                    onClick={() => {
+                      setActiveSection(link.name);
+                      setTimeOfLastClick(Date.now());
+                      setIsOpen(false);
                     }}
-                  ></motion.span>
-                )}
-              </Link>
-            </motion.li>
-          ))}
-        </ul>
-      </nav>
+                  >
+                    {link.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

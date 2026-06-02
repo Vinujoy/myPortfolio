@@ -38,9 +38,7 @@ export default function Experience() {
     <section
       id="experience"
       ref={(node) => {
-        if (node) {
-          sectionRef.current = node;
-        }
+        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = node;
         if (typeof ref === "function") ref(node);
       }}
       className="section-block site-container scroll-mt-28"

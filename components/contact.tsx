@@ -66,36 +66,41 @@ export default function Contact() {
           toast.success("Email sent successfully!");
         }}
       >
-        <label className="relative mb-5 block">
+        <label htmlFor="contact-name" className="relative mb-5 block">
           <span className="absolute left-4 top-2 font-[var(--font-mono)] text-[10px] text-[var(--accent)]">
             Name
           </span>
           <input
+            id="contact-name"
             className="w-full rounded-[10px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 pb-2 pt-5 text-[15px] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]"
             name="senderName"
             type="text"
+            autoComplete="name"
             maxLength={200}
           />
         </label>
 
-        <label className="relative mb-5 block">
+        <label htmlFor="contact-email" className="relative mb-5 block">
           <span className="absolute left-4 top-2 font-[var(--font-mono)] text-[10px] text-[var(--accent)]">
             Email
           </span>
           <input
+            id="contact-email"
             className="w-full rounded-[10px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 pb-2 pt-5 text-[15px] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]"
             name="senderEmail"
             type="email"
             required
+            autoComplete="email"
             maxLength={500}
           />
         </label>
 
-        <label className="relative mb-5 block">
+        <label htmlFor="contact-message" className="relative mb-5 block">
           <span className="absolute left-4 top-2 font-[var(--font-mono)] text-[10px] text-[var(--accent)]">
             Message
           </span>
           <textarea
+            id="contact-message"
             className="min-h-[140px] w-full resize-y rounded-[10px] border border-[var(--border-subtle)] bg-[var(--bg-elevated)] px-4 pb-2 pt-5 text-[15px] text-[var(--text-primary)] outline-none transition-all focus:border-[var(--accent)] focus:shadow-[0_0_0_3px_rgba(99,102,241,0.1)]"
             name="message"
             required

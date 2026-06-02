@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import CaseStudyReveal from "@/components/case-study-reveal";
 
 export const metadata: Metadata = {
-  title: "Tonico Smiles Case Study | Vinu Joy",
+  title: "Tonico Smiles E-commerce Case Study",
   description:
     "Case study on building Tonico Smiles — a mobile-first online grocery and fresh delivery platform with category-driven browsing, fast checkout, and performance-optimized product rendering.",
+  alternates: { canonical: "https://vinu-joy.vercel.app/case-studies/tonico-smiles" },
+  openGraph: {
+    title: "Tonico Smiles Case Study | Vinu Joy",
+    description:
+      "Building Tonico Smiles e-commerce — 40% customer retention increase, 25% rise in average order value.",
+    url: "https://vinu-joy.vercel.app/case-studies/tonico-smiles",
+    type: "article",
+  },
 };
 
 export default function TonicoSmilesCaseStudyPage() {

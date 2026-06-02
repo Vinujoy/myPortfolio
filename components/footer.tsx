@@ -9,15 +9,15 @@ export default function Footer() {
         </small>
         <p className="font-[var(--font-mono)] text-xs text-[var(--text-dim)]">
           Built with{" "}
-          <a className="hover:text-[var(--accent)]" href="https://nextjs.org" target="_blank" rel="noreferrer">
+          <a className="hover:text-[var(--accent)]" href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
             Next.js
           </a>{" "}
           ·{" "}
-          <a className="hover:text-[var(--accent)]" href="https://react.dev" target="_blank" rel="noreferrer">
+          <a className="hover:text-[var(--accent)]" href="https://react.dev" target="_blank" rel="noopener noreferrer">
             React
           </a>{" "}
           ·{" "}
-          <a className="hover:text-[var(--accent)]" href="https://www.framer.com/motion/" target="_blank" rel="noreferrer">
+          <a className="hover:text-[var(--accent)]" href="https://www.framer.com/motion/" target="_blank" rel="noopener noreferrer">
             Framer Motion
           </a>
         </p>

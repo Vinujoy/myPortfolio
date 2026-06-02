@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import CaseStudyReveal from "@/components/case-study-reveal";
 
 export const metadata: Metadata = {
-  title: "Cargo Release Platform Case Study | Vinu Joy",
+  title: "Cargo Release Platform Case Study",
   description:
     "Case study on building CMA CGM's cargo readiness notification platform — automating release workflows, data-heavy operational UIs, and multi-rail vendor integrations.",
+  alternates: { canonical: "https://vinu-joy.vercel.app/case-studies/import-cargo-release" },
+  openGraph: {
+    title: "Cargo Release Platform Case Study | Vinu Joy",
+    description:
+      "Building CMA CGM's cargo readiness notification platform — 20% reduction in communication errors.",
+    url: "https://vinu-joy.vercel.app/case-studies/import-cargo-release",
+    type: "article",
+  },
 };
 
 export default function ImportCargoReleaseCaseStudyPage() {

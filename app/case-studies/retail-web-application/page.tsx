@@ -3,9 +3,17 @@ import Image from "next/image";
 import CaseStudyReveal from "@/components/case-study-reveal";
 
 export const metadata: Metadata = {
-  title: "Retail Web Application Case Study | Vinu Joy",
+  title: "Retail Web Application Case Study",
   description:
     "Case study on architecting a scalable Next.js retail web application for a Middle East real estate client using SSR, SSG, ISR, Redux Toolkit, and performance-first frontend architecture.",
+  alternates: { canonical: "https://vinu-joy.vercel.app/case-studies/retail-web-application" },
+  openGraph: {
+    title: "Retail Web Application Case Study | Vinu Joy",
+    description:
+      "Architecting a scalable Next.js retail platform — SSR/SSG/ISR, Lighthouse 72→95, bundle −25%.",
+    url: "https://vinu-joy.vercel.app/case-studies/retail-web-application",
+    type: "article",
+  },
 };
 
 const productScreenshots = [

@@ -15,6 +15,7 @@ export default function Intro() {
   const [activeNote, setActiveNote] = useState<"performance" | "scalability" | "delivery">(
     "performance"
   );
+  // activeNote used by the studio panel tabs in the right column
   const words = useMemo(
     () => "I build fast, scalable React & Next.js applications.".split(" "),
     []
@@ -227,6 +228,7 @@ export default function Intro() {
       </div>
 
       <motion.div
+        aria-hidden="true"
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center font-[var(--font-mono)] text-[10px] uppercase tracking-[0.15em] text-[var(--text-dim)]"
         animate={{ opacity: hideScrollIndicator ? 0 : 1 }}
       >

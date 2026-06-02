@@ -70,16 +70,21 @@ export default function CustomCursor() {
   }
 
   return (
-    <>
+    <div aria-hidden="true">
       <div
         ref={outerRef}
         className="custom-cursor-outer"
         style={{
           opacity: isHoveringInteractive ? 1 : 0.6,
           background: isHoveringInteractive ? "var(--accent-glow)" : "transparent",
+          willChange: "transform",
         }}
       />
-      <div ref={innerRef} className="custom-cursor-inner" />
-    </>
+      <div
+        ref={innerRef}
+        className="custom-cursor-inner"
+        style={{ willChange: "transform" }}
+      />
+    </div>
   );
 }

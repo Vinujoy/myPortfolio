@@ -75,6 +75,8 @@ export default function Header() {
         <button
           className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] text-[var(--text-secondary)]"
           aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           {isOpen ? <HiOutlineX size={20} /> : <HiOutlineMenuAlt3 size={20} />}
@@ -84,12 +86,14 @@ export default function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="mobile-nav-overlay fixed inset-0 top-16 backdrop-blur-2xl md:hidden"
           >
             <motion.ul
+              role="list"
               className="flex h-full flex-col items-center justify-center gap-8"
               initial="hidden"
               animate="show"

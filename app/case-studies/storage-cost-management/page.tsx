@@ -2,9 +2,17 @@ import type { Metadata } from "next";
 import CaseStudyReveal from "@/components/case-study-reveal";
 
 export const metadata: Metadata = {
-  title: "Storage Cost Management Case Study | Vinu Joy",
+  title: "Storage Cost Management Case Study",
   description:
     "Case study on building CMA CGM's storage cost management platform — workflow automation, dynamic cost calculations, multi-stage approvals, and role-based enterprise operations.",
+  alternates: { canonical: "https://vinu-joy.vercel.app/case-studies/storage-cost-management" },
+  openGraph: {
+    title: "Storage Cost Management Case Study | Vinu Joy",
+    description:
+      "Building CMA CGM's storage cost platform — replacing spreadsheets, $16M+ operational profit impact.",
+    url: "https://vinu-joy.vercel.app/case-studies/storage-cost-management",
+    type: "article",
+  },
 };
 
 export default function StorageCostManagementCaseStudyPage() {

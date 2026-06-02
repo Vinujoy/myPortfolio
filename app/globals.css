@@ -278,3 +278,41 @@ html.dark .header-shell {
     scroll-behavior: auto !important;
   }
 }
+
+/* Improve CLS: reserve space for animated words so layout doesn't shift */
+.hero-word-animate {
+  display: inline-block;
+}
+
+/* Ensure interactive elements have minimum tap target for mobile a11y */
+a,
+button,
+[role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Exception: small inline icons that have explicit sizing */
+a.inline-icon-sm {
+  min-height: unset;
+  min-width: unset;
+}
+
+/* Skip-to-main navigation link for keyboard users */
+.skip-to-main {
+  position: absolute;
+  top: -100%;
+  left: 8px;
+  z-index: 9999;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-to-main:focus {
+  top: 0;
+}

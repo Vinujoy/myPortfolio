@@ -6,13 +6,13 @@ export default function Footer() {
     <footer className="overflow-hidden bg-[var(--hero)] text-[var(--hero-ink)]">
       <div className="site-container flex flex-col justify-between gap-6 pt-[clamp(56px,7vw,112px)] md:flex-row md:items-end">
         <p className="max-w-[28ch] text-lead">
-          Senior frontend developer, open to freelance.
+          Senior frontend developer, open to full-time roles.
         </p>
         <a
-          href="mailto:vinujoydev@gmail.com?subject=Freelance%20project"
+          href="mailto:vinujoydev@gmail.com?subject=Hello%20Vinu"
           className="btn btn-accent self-start md:self-auto"
         >
-          Hire me for freelance
+          Email me
         </a>
       </div>
       <p

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: "%s | Vinu Joy",
   },
   description:
-    "Senior Frontend Developer & Architect with 7+ years building scalable React & Next.js applications for enterprise clients. Lighthouse 72→95. Bundle −25%. Available for freelance.",
+    "Senior Frontend Developer & Architect with 7+ years building scalable React & Next.js applications for enterprise clients. Lighthouse 72→95. Bundle −25%. Open to full-time opportunities.",
   keywords: [
     "Senior Frontend Developer",
     "React Developer",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Performance Optimization",
     "Core Web Vitals",
     "SSR SSG ISR",
-    "Freelance Frontend Developer",
+    "Frontend Engineer",
     "Kerala",
     "India",
     "UAE",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vinu Joy | Senior Frontend Developer & Architect",
     description:
-      "Senior Frontend Developer with 7+ years. React, Next.js, TypeScript specialist. Lighthouse 72→95. Bundle −25%. Available for freelance.",
+      "Senior Frontend Developer with 7+ years. React, Next.js, TypeScript specialist. Lighthouse 72→95. Bundle −25%. Open to full-time opportunities.",
     url: BASE_URL,
     siteName: "Vinu Joy Portfolio",
     locale: "en_US",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vinu Joy | Senior Frontend Developer & Architect",
     description:
-      "React & Next.js specialist. Lighthouse 72→95. Bundle −25%. Available for freelance projects.",
+      "React & Next.js specialist. Lighthouse 72→95. Bundle −25%. Open to full-time opportunities.",
     creator: "@vinujoy",
     images: ["/og-image.png"],
   },

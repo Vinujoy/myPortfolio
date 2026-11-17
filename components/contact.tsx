@@ -39,7 +39,7 @@ export default function Contact() {
             Let us work together
           </h2>
           <p className="max-w-[34ch]">
-            Tell me what you are building. Open to freelance work. Your message goes straight to my inbox and I
+            Tell me about the role or the project. Your message goes straight to my inbox and I
             usually reply within a day.
           </p>
         </div>

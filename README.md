@@ -4,7 +4,7 @@
 > **Email:** vinujoydev@gmail.com  
 > **LinkedIn:** [linkedin.com/in/vinujoy](https://www.linkedin.com/in/vinujoy/)  
 > **Location:** Kerala, India  
-> **Status:** Available for freelance projects
+> **Status:** Open to full-time opportunities
 
 ---
 

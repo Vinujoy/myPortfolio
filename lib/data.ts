@@ -130,7 +130,7 @@ export const factsData = [
   { label: "Based in", value: "Kerala, India" },
   { label: "Building for the web since", value: "2019" },
   { label: "Experience", value: "7+ years" },
-  { label: "Availability", value: "Open to freelance" },
+  { label: "Availability", value: "Open to full-time roles" },
 ] as const;
 
 /** Each row points at a project (index into projectsData): hovering shows its screen. */

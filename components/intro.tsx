@@ -96,7 +96,7 @@ export default function Intro() {
                     className="btn"
                     onClick={() => go("Contact")}
                   >
-                    Hire me for freelance
+                    Contact me
                   </Link>
                   <a
                     href="/Senior_Frontend_Developer_Vinu_Joy.pdf"

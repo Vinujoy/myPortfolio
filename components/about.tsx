@@ -56,8 +56,8 @@ export default function About() {
               which I pass on by mentoring.
             </p>
             <p>
-              I am open to freelance projects with product companies and studios
-              that care about performance and clean code. Write to me below.
+              I am looking for my next full-time role, on a product team that
+              cares about performance and clean code. Write to me below.
             </p>
           </div>
           <p className="mt-9 text-lead font-medium italic">

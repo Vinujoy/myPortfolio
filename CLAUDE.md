@@ -9,7 +9,7 @@ Upload this file to Claude when you need to edit the portfolio without access to
 | | |
 |---|---|
 | **Name** | Vinu Joy |
-| **Role** | Senior Frontend Developer / Freelance Frontend Architect |
+| **Role** | Senior Frontend Developer / Frontend Architect |
 | **Experience** | 7+ years (since Jul 2019) |
 | **Live site** | https://vinu-joy.vercel.app |
 | **Email** | vinujoydev@gmail.com |
@@ -229,7 +229,7 @@ export const skillGroups = [{ name, items: "comma separated string" }] as const;
 | `reveal.tsx` | Scroll entrance; hidden only when `html.js` is set, so content shows without script |
 | `theme-switch.tsx` | Dark / Light toggle (fixed bottom-right) |
 | `submit-btn.tsx` | Form submit with loading spinner |
-| `footer.tsx` | Back of the object: full-width name, green hire button |
+| `footer.tsx` | Back of the object: full-width name, green email button |
 | `structured-data.tsx` | JSON-LD Person and WebSite |
 | `case-study-reveal.tsx` | Entrance wrapper for case-study pages |
 

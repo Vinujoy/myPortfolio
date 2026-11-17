@@ -11,7 +11,7 @@ export default function StructuredData() {
     image: "https://vinu-joy.vercel.app/og-image.png",
     jobTitle: "Senior Frontend Developer & Architect",
     description:
-      "Senior Frontend Developer with 6+ years building scalable React & Next.js applications for enterprise clients. Specialises in SSR/SSG/ISR architecture, performance optimisation, and component systems.",
+      "Senior Frontend Developer with 7+ years building scalable React & Next.js applications for enterprise clients. Specialises in SSR/SSG/ISR architecture, performance optimisation, and component systems.",
     email: "vinujoydev@gmail.com",
     sameAs: ["https://www.linkedin.com/in/vinujoy/"],
     knowsAbout: [

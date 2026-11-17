@@ -1,47 +1,37 @@
 import Header from "@/components/header";
 import "./globals.css";
-import { DM_Sans, JetBrains_Mono, Syne } from "next/font/google";
+import { Zilla_Slab } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
-import CustomCursor from "@/components/custom-cursor";
 import ThemeSwitch from "@/components/theme-switch";
 import StructuredData from "@/components/structured-data";
 
-const syne = Syne({
+const zilla = Zilla_Slab({
   subsets: ["latin"],
-  weight: ["700", "800"],
-  variable: "--font-display",
-  display: "swap",
-  preload: true,
-});
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--font-body",
   display: "swap",
   preload: true,
-});
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
-  display: "swap",
-  preload: false,
 });
 
 const BASE_URL = "https://vinu-joy.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ebe5e3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d1917" },
+  ],
   title: {
     default: "Vinu Joy | Senior Frontend Developer & Architect",
     template: "%s | Vinu Joy",
   },
   description:
-    "Senior Frontend Developer & Architect with 6+ years building scalable React & Next.js applications for enterprise clients. Lighthouse 72→95. Bundle −25%. Available for freelance.",
+    "Senior Frontend Developer & Architect with 7+ years building scalable React & Next.js applications for enterprise clients. Lighthouse 72→95. Bundle −25%. Available for freelance.",
   keywords: [
     "Senior Frontend Developer",
     "React Developer",
@@ -64,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vinu Joy | Senior Frontend Developer & Architect",
     description:
-      "Senior Frontend Developer with 6+ years. React, Next.js, TypeScript specialist. Lighthouse 72→95. Bundle −25%. Available for freelance.",
+      "Senior Frontend Developer with 7+ years. React, Next.js, TypeScript specialist. Lighthouse 72→95. Bundle −25%. Available for freelance.",
     url: BASE_URL,
     siteName: "Vinu Joy Portfolio",
     locale: "en_US",
@@ -94,6 +84,8 @@ export const metadata: Metadata = {
   // verification: { google: "YOUR_SEARCH_CONSOLE_TOKEN" },
 };
 
+const themeScript = `document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: {
@@ -102,15 +94,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={zilla.variable}
+      suppressHydrationWarning
     >
-      <body className="relative min-h-screen pt-16">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="relative min-h-screen">
         <a href="#main-content" className="skip-to-main">
           Skip to main content
         </a>
         <StructuredData />
         <ThemeContextProvider>
-          <CustomCursor />
           <ActiveSectionContextProvider>
             <Header />
             {children}

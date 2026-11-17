@@ -10,7 +10,7 @@ Upload this file to Claude when you need to edit the portfolio without access to
 |---|---|
 | **Name** | Vinu Joy |
 | **Role** | Senior Frontend Developer / Freelance Frontend Architect |
-| **Experience** | 6 years 10 months |
+| **Experience** | 7+ years (since Jul 2019) |
 | **Live site** | https://vinu-joy.vercel.app |
 | **Email** | vinujoydev@gmail.com |
 | **LinkedIn** | https://www.linkedin.com/in/vinujoy/ |
@@ -54,9 +54,9 @@ Contact email recipient is hardcoded in `actions/sendEmail.ts` → `to: "vinujoy
 ```
 myPortfolio/
 ├── app/
-│   ├── layout.tsx          # Root layout, full SEO metadata, providers, dark bg
+│   ├── layout.tsx          # Root layout, Zilla Slab font, SEO metadata, providers
 │   ├── page.tsx            # Home: stacks all sections in order
-│   ├── globals.css         # Tailwind + .borderBlack + :focus-visible + line-height
+│   ├── globals.css         # Design tokens (rose-grey paper tones, light/dark), folder, sheet and coupon shapes
 │   ├── robots.ts           # Next.js 13 robots.txt generation
 │   └── sitemap.ts          # Next.js 13 sitemap.xml generation
 ├── actions/
@@ -82,14 +82,16 @@ myPortfolio/
 
 ## Page layout (app/page.tsx)
 
+Design direction: **"The page is the object"** (taste-skill, seed 371202920). The site is a client case file. One typeface (Zilla Slab), flat rose-grey tones, one green accent used only on the current nav link and the footer button. No gradients, no shadows at rest, no hairlines.
+
 Sections render top-to-bottom:
-1. **Intro** (`#home`) — bold headline, metrics sub-line, freelance badge, CTAs
-2. SectionDivider
-3. **About** (`#about`)
-4. **Projects** (`#projects`) — from `projectsData`
-5. **Skills** (`#skills`) — from `skillsData`
-6. **Experience** (`#experience`) — vertical timeline from `experiencesData`
-7. **Contact** (`#contact`)
+1. **Intro** (`#home`) — dark ground, name as `h1`, one sentence, five tabbed folders (About, Work, Results, Experience, Contact) that link to their sections; the front folder holds the CTA
+2. **About** (`#about`) — a typed letter on a paper sheet with a scalloped edge, plus a tear-off strip with the email
+3. **Work** (`#projects`) — sticky stacked folder bands from `projectsData`; the first holds the live Lighthouse before/after (`before-after.tsx`)
+4. **Results** (`#results`) — giant word, bars that open in place from `resultGroups`; hovering a row previews its project screen
+5. **Experience** (`#experience`) — pinned deck of cards that fold into spines, from `experiencesData` (pin only on `lg+`; stacked on phones)
+6. **Skills** (`#skills`) — grouped list from `skillGroups`
+7. **Contact** (`#contact`) — coupon card with notches and a perforation; the form is a coupon to cut out
 
 `app/layout.tsx` wraps all content with:
 - `ThemeContextProvider` → `ActiveSectionContextProvider`
@@ -141,16 +143,16 @@ Sections render top-to-bottom:
 | Nav order / labels | `lib/data.ts` → `links`; reorder in `app/page.tsx` |
 | Job history | `lib/data.ts` → `experiencesData` |
 | Project cards | `lib/data.ts` → `projectsData` + image in `public/` |
-| Skills | `lib/data.ts` → `skillsData` |
+| Skills | `lib/data.ts` → `skillGroups` |
+| Result figures | `lib/data.ts` → `resultGroups` (each row points at a project index for the hover preview) |
 | About / intro copy | `components/about.tsx`, `components/intro.tsx` |
 | SEO title/description | `app/layout.tsx` → `metadata` |
 | Contact email recipient | `actions/sendEmail.ts` → `to` |
 | Email template | `email/contact-form-email.tsx` |
-| LinkedIn / social links | `components/intro.tsx` |
+| LinkedIn / social links | `components/contact.tsx`, `components/experience.tsx` |
 | Footer copy | `components/footer.tsx` |
-| Colors / fonts | `app/layout.tsx`, `app/globals.css`, `tailwind.config.js` |
-| Profile photo | `public/passport.jpg` + `components/intro.tsx` import |
-| Dark background depth | `app/layout.tsx` body → `dark:bg-gray-950` |
+| Colors / fonts | `app/layout.tsx` (font), `app/globals.css` (`:root` tokens + `html.dark`) |
+| Profile photo | `public/passport.jpg` + `components/about.tsx` import |
 
 ---
 
@@ -163,43 +165,35 @@ export const links = [
   // ...
 ] as const;
 
-// Experience — icon is React.createElement(SomeIcon)
+// Experience — newest first; href/hrefLabel optional (links to a case study)
 export const experiencesData = [
-  {
-    title: string,
-    location: string,
-    description: string,
-    icon: React.ReactElement,
-    date: string,         // e.g. "Aug 2024 – Present"
-  },
+  { title, company, clientNote, excerpt, date, stack, href?, hrefLabel? },
 ] as const;
 
 // Projects — imageUrl is a StaticImageData (imported from public/)
 export const projectsData = [
-  {
-    title: string,
-    description: string,
-    tags: string[],
-    imageUrl: StaticImageData,
-  },
+  { title, description, tags, imageUrl, caseStudyUrl, kind, context, constraint, decision, metric: { value, label }, alt },
 ] as const;
 
-// Skills — simple string array, displayed as pills
-export const skillsData = ["React.js", "Next.js", ...] as const;
+// Results — grouped bars; each item's `project` is an index into projectsData
+export const resultGroups = [{ name, items: [{ label, value, project }] }] as const;
+
+// Skills — grouped, displayed as a definition list
+export const skillGroups = [{ name, items: "comma separated string" }] as const;
 ```
 
 **Adding a new section:**
 1. Append to `links` in `lib/data.ts`
 2. Create `components/your-section.tsx` with `useSectionInView("YourName")`
 3. Import and add to `app/page.tsx`
-4. Add `id="your-section"` + `scroll-mt-28` on the section element
+4. Add `id="your-section"` + `scroll-mt-12` on the section element
 
 ---
 
 ## Contact form flow
 
 1. `components/contact.tsx` — client form, `action={async (formData) => ...}`
-2. Fields: `senderEmail` (email, max 500 chars), `message` (textarea, max 5000 chars)
+2. Fields: `senderName`, `senderEmail` (email, max 500 chars), `message` (textarea, max 5000 chars)
 3. Calls `sendEmail(formData)` from `actions/sendEmail.ts`
 4. Validates → sends via Resend with `ContactFormEmail` React template
 5. Toast success / error via `react-hot-toast`
@@ -211,9 +205,8 @@ export const skillsData = ["React.js", "Next.js", ...] as const;
 
 | Package | Purpose |
 |---------|---------|
-| `framer-motion` | Animations, hero, project scroll effects |
+| `framer-motion` | Menu transitions and the experience deck scroll progress |
 | `react-intersection-observer` | Scroll-spy |
-| `react-vertical-timeline-component` | Experience section |
 | `react-icons` | UI icons |
 | `clsx` | Conditional class names in header |
 | `resend`, `@react-email/*` | Email |
@@ -224,19 +217,21 @@ export const skillsData = ["React.js", "Next.js", ...] as const;
 
 | Component | Role |
 |-----------|------|
-| `header.tsx` | Fixed nav, scroll-spy highlight, `aria-current`, `aria-label` on nav |
-| `intro.tsx` | Hero: bold headline, metrics sub-line, freelance badge, CTA buttons |
-| `about.tsx` | Bio with freelance positioning |
-| `projects.tsx` | Maps `projectsData` → `Project` |
-| `project.tsx` | Card with scroll-linked scale/opacity, descriptive alt text |
-| `skills.tsx` | Animated minimal border pills from `skillsData` |
-| `experience.tsx` | `VerticalTimeline` with theme-aware styles |
-| `contact.tsx` | Form + toasts |
-| `section-heading.tsx` | `<h2>` wrapper |
-| `section-divider.tsx` | Visual break after intro |
-| `theme-switch.tsx` | Sun/moon toggle (fixed bottom-right) |
+| `header.tsx` | Fixed bar: links left, wordmark centre, links right; turns dark over the hero; green current link |
+| `intro.tsx` | Hero: name, sentence, five tabbed folders, CTA on the front folder |
+| `about.tsx` | Letter on a scalloped sheet and tear-off email strip |
+| `projects.tsx` | Sticky stacked folder bands from `projectsData` |
+| `before-after.tsx` | Live Lighthouse 72 / 95 dial with Before and After buttons |
+| `results.tsx` | Giant "Results" word, `details` bars, hover preview frame |
+| `experience.tsx` | Pinned deck of cards that fold into spines (stacked on phones) |
+| `skills.tsx` | Grouped skills from `skillGroups` |
+| `contact.tsx` | Coupon card with the form and toasts |
+| `reveal.tsx` | Scroll entrance; hidden only when `html.js` is set, so content shows without script |
+| `theme-switch.tsx` | Dark / Light toggle (fixed bottom-right) |
 | `submit-btn.tsx` | Form submit with loading spinner |
-| `footer.tsx` | Copyright + tech stack note |
+| `footer.tsx` | Back of the object: full-width name, green hire button |
+| `structured-data.tsx` | JSON-LD Person and WebSite |
+| `case-study-reveal.tsx` | Entrance wrapper for case-study pages |
 
 ---
 
@@ -250,12 +245,13 @@ export const skillsData = ["React.js", "Next.js", ...] as const;
 
 ## Styling notes
 
-- **Body**: `bg-gray-50` light / `dark:bg-gray-950` dark, Inter font
-- **Decorative blobs** in `layout.tsx`: light pink + light violet in light mode; `#946263` + `#676394` in dark
-- **Projects**: alternating image layout on `sm+` via `group-even:` Tailwind classes
-- **Skills pills**: border-only, `hover:-translate-y-0.5` lift
+- **Font**: Zilla Slab only (400, 500, 600), loaded in `app/layout.tsx` as `--font-body`
+- **Tokens**: `--bg`, `--surface`, `--tone-3` to `--tone-5`, `--ink`, `--muted`, `--accent`, `--hero`; redefined under `html.dark`
+- **Type steps**: `--step-small`, `--step-body`, `--step-lead`, `--step-head`. In Tailwind use `text-[length:var(--step-lead)]` (the `length:` hint is required) or the `.text-lead` / `.small` classes
+- **Shapes**: tabs, sheet scallops and coupon notches are `clip-path` / `mask` fills in `globals.css`; separators are space or a tone step, never a line
+- **Radius**: square everywhere (buttons, cards); only the portrait is round
 - **Focus states**: global `:focus-visible` ring in `globals.css`
-- **Line height**: global `line-height: 1.7` on body in `globals.css`
+- **Design checks**: `node .claude/skills/design-taste-frontend/scripts/inspect.mjs http://localhost:3000 --out .taste-skill/after2` (needs the dev server running)
 
 ---
 

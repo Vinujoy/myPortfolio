@@ -1,85 +1,85 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { usePathname } from "next/navigation";
-import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
+
+type LinkItem = (typeof links)[number];
+
+const navLinks = links.filter((link) => link.name !== "Home");
+const leftLinks = navLinks.slice(0, 3);
+const rightLinks = navLinks.slice(3);
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const onHome = pathname === "/";
+  const onHero = onHome && activeSection === "Home";
 
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 100);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const go = (name: LinkItem["name"]) => {
+    setActiveSection(name);
+    setTimeOfLastClick(Date.now());
+    setIsOpen(false);
+  };
+
+  const renderLink = (link: LinkItem) => {
+    const current = onHome && activeSection === link.name;
+    return (
+      <li key={link.hash}>
+        <Link
+          href={onHome ? link.hash : `/${link.hash}`}
+          aria-current={current ? "page" : undefined}
+          className={clsx(
+            "inline-flex min-h-[44px] items-center transition-colors duration-150",
+            current
+              ? "font-semibold text-[var(--accent)]"
+              : "hover:text-[var(--accent)]"
+          )}
+          onClick={() => go(link.name)}
+        >
+          {link.name}
+        </Link>
+      </li>
+    );
+  };
 
   return (
-    <header className="header-shell fixed inset-x-0 top-0 z-[100] h-16 transition-colors">
-      <div
-        className={clsx(
-          "site-container flex h-full items-center justify-between",
-          isScrolled && "border-b border-[var(--border-subtle)]"
-        )}
-      >
+    <header
+      className="header-shell fixed inset-x-0 top-0 z-[100] h-16"
+      data-on-hero={onHero ? "true" : "false"}
+    >
+      <div className="site-container grid h-full grid-cols-[1fr_auto] items-center md:grid-cols-[1fr_auto_1fr]">
+        <nav className="hidden md:block" aria-label="Main navigation">
+          <ul className="flex items-center gap-8">{leftLinks.map(renderLink)}</ul>
+        </nav>
+
         <Link
           href="/"
-          className="font-[var(--font-display)] text-[22px] font-extrabold tracking-normal text-[var(--text-primary)] transition-all duration-200 hover:tracking-[0.5px]"
+          className="inline-flex min-h-[44px] items-center font-semibold tracking-tight md:justify-self-center"
+          translate="no"
+          onClick={() => go("Home")}
         >
-          vinu<span className="text-[var(--accent)]">.</span>
+          Vinu Joy
         </Link>
 
-        <nav className="hidden md:block" aria-label="Main navigation">
-          <ul className="flex items-center gap-6">
-            {links.map((link) => (
-              <li key={link.hash}>
-                <Link
-                  href={pathname === "/" ? link.hash : `/${link.hash}`}
-                  aria-current={activeSection === link.name ? "page" : undefined}
-                  className={clsx(
-                    "font-[var(--font-mono)] text-[12px] uppercase tracking-[0.06em] transition-colors duration-150",
-                    activeSection === link.name
-                      ? "text-[var(--text-primary)]"
-                      : "text-[var(--text-primary)]/70 hover:text-[var(--accent)]"
-                  )}
-                  onClick={() => {
-                    setActiveSection(link.name);
-                    setTimeOfLastClick(Date.now());
-                  }}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <nav className="hidden justify-self-end md:block" aria-label="Secondary navigation">
+          <ul className="flex items-center gap-8">{rightLinks.map(renderLink)}</ul>
         </nav>
 
         <button
-          className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--border-subtle)] text-[var(--text-secondary)]"
+          className="inline-flex items-center justify-self-end font-semibold md:hidden"
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
           aria-controls="mobile-nav"
           onClick={() => setIsOpen((prev) => !prev)}
         >
-          {isOpen ? <HiOutlineX size={20} /> : <HiOutlineMenuAlt3 size={20} />}
+          {isOpen ? "Close" : "Menu"}
         </button>
       </div>
 
@@ -90,34 +90,30 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="mobile-nav-overlay fixed inset-0 top-16 backdrop-blur-2xl md:hidden"
+            className="mobile-nav-overlay fixed inset-0 top-16 md:hidden"
           >
             <motion.ul
               role="list"
-              className="flex h-full flex-col items-center justify-center gap-8"
+              className="site-container flex h-full flex-col justify-center gap-1 pb-24"
               initial="hidden"
               animate="show"
               variants={{
                 hidden: {},
-                show: { transition: { staggerChildren: 0.08 } },
+                show: { transition: { staggerChildren: 0.06 } },
               }}
             >
-              {links.map((link) => (
+              {navLinks.map((link) => (
                 <motion.li
                   key={link.hash}
                   variants={{
-                    hidden: { opacity: 0, y: -20 },
+                    hidden: { opacity: 0, y: 16 },
                     show: { opacity: 1, y: 0 },
                   }}
                 >
                   <Link
-                    href={pathname === "/" ? link.hash : `/${link.hash}`}
-                    className="font-[var(--font-display)] text-[28px] text-[var(--text-primary)]"
-                    onClick={() => {
-                      setActiveSection(link.name);
-                      setTimeOfLastClick(Date.now());
-                      setIsOpen(false);
-                    }}
+                    href={onHome ? link.hash : `/${link.hash}`}
+                    className="display inline-flex min-h-[44px] items-center text-[13vw]"
+                    onClick={() => go(link.name)}
                   >
                     {link.name}
                   </Link>

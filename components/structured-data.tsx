@@ -13,6 +13,7 @@ export default function StructuredData() {
     description:
       "Senior Frontend Developer with 7+ years building scalable React & Next.js applications for enterprise clients. Specialises in SSR/SSG/ISR architecture, performance optimisation, and component systems.",
     email: "vinujoydev@gmail.com",
+    telephone: "+919995452371",
     sameAs: ["https://www.linkedin.com/in/vinujoy/"],
     knowsAbout: [
       "React.js",

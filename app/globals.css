@@ -5,7 +5,7 @@
 /*
   Direction: "The page is the object" (taste-skill, seed 371202920).
   The portfolio is a client case file: tabbed folders, a typed letter, a Lighthouse
-  report. One typeface (Zilla Slab). Rose-grey paper tones, one ink, one green accent
+  report. Zilla Slab for headings, Inter for body. Rose-grey paper tones, one ink, one green accent
   used only on the current link and one footer button. Flat fills, no gradients,
   no shadows at rest, no hairlines.
 */
@@ -73,7 +73,7 @@ html {
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--font-body), Georgia, serif;
+  font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: var(--step-body);
   overflow-x: clip;
   line-height: 1.5;
@@ -102,7 +102,7 @@ body {
 
 .display {
   text-wrap: balance;
-  font-family: var(--font-body), Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
   font-weight: 600;
   line-height: 1;
   letter-spacing: -0.025em;
@@ -110,7 +110,7 @@ body {
 
 .section-heading {
   text-wrap: balance;
-  font-family: var(--font-body), Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
   font-size: var(--step-head);
   font-weight: 600;
   line-height: 1;
@@ -145,7 +145,7 @@ body {
   padding: 0 1.75rem;
   background: var(--ink);
   color: var(--bg);
-  font-family: var(--font-body), Georgia, serif;
+  font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: var(--step-body);
   font-weight: 600;
   border: 0;
@@ -314,7 +314,7 @@ body {
 
 .case-study-heading {
   color: var(--ink);
-  font-family: var(--font-body), Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.05;

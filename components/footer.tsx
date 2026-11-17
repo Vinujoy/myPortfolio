@@ -8,12 +8,17 @@ export default function Footer() {
         <p className="max-w-[28ch] text-lead">
           Senior frontend developer, open to full-time roles.
         </p>
-        <a
-          href="mailto:vinujoydev@gmail.com?subject=Hello%20Vinu"
-          className="btn btn-accent self-start md:self-auto"
-        >
-          Email me
-        </a>
+        <div className="flex flex-col items-start gap-3 md:items-end">
+          <a
+            href="mailto:vinujoydev@gmail.com?subject=Hello%20Vinu"
+            className="btn btn-accent"
+          >
+            Email me
+          </a>
+          <a href="tel:+919995452371" className="text-link tabular text-lead">
+            +91 99954 52371
+          </a>
+        </div>
       </div>
       <p
         aria-hidden="true"

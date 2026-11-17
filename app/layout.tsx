@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import "./globals.css";
-import { Zilla_Slab } from "next/font/google";
+import { Zilla_Slab, Inter } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
@@ -13,6 +13,13 @@ const zilla = Zilla_Slab({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
+  variable: "--font-heading",
+  display: "swap",
+  preload: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
   preload: true,
@@ -94,7 +101,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={zilla.variable}
+      className={`${zilla.variable} ${inter.variable}`}
       suppressHydrationWarning
     >
       <head>

@@ -114,6 +114,12 @@ export default function Contact() {
         >
           {copied ? "Copied" : "Copy address"}
         </button>
+        <p>
+          Or call:{" "}
+          <a className="text-link font-semibold tabular" href="tel:+919995452371">
+            +91 99954 52371
+          </a>
+        </p>
         <a
           className="text-link inline-flex min-h-[44px] items-center font-semibold"
           href="https://www.linkedin.com/in/vinujoy/"
